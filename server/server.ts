@@ -2,9 +2,10 @@ import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import connectDB from "./config/db.js";
-import authRouter from "./routes/authRoutes.js";
-import restaurantRoutes from "./routes/restaurantRoutes.js";
-
+import AuthRouter from "./routes/authRoutes.js";
+import RestaurantRouter from "./routes/restaurantRoutes.js";
+import BookingRouter from "./routes/bookingRoutes.js";
+import ownerRouter from "./routes/ownerRoutes.js";
 
 const app = express();
 
@@ -19,9 +20,10 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Server is Live!");
 });
 
-app.use("/api/auth",authRouter);
-app.use("/api/restaurants", restaurantRoutes);
-
+app.use("/api/auth", AuthRouter);
+app.use("/api/restaurants", RestaurantRouter);
+app.use("/api/bookings", BookingRouter);
+app.use("/api/owner",ownerRouter);
 
 // Global error handler
 app.use((err: Error,req: Request,res: Response,next: NextFunction) => {

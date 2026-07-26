@@ -3,12 +3,12 @@ import { getAllRestaurants, getFeaturedRestaurants, getRestaurantAvailability, g
 
 
 
-const authRouter=Router();
+const RestaurantRouter=Router();
 
-authRouter.post("/",getAllRestaurants);
-authRouter.get("/featured",getFeaturedRestaurants);
-authRouter.get("/:id/availability", getRestaurantAvailability);
-authRouter.get("/:slug", getRestaurantBySlug);
+RestaurantRouter.post("/",getAllRestaurants);
+RestaurantRouter.get("/featured",getFeaturedRestaurants);
+RestaurantRouter.get("/:id/availability", getRestaurantAvailability);
+RestaurantRouter.get("/:slug", getRestaurantBySlug);
 
 
-export default authRouter;
+export default RestaurantRouter;

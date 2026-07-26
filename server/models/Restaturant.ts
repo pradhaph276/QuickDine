@@ -1,25 +1,47 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IRestaurant extends Document {
-  name: string;
+name: string;
   slug: string;
   description: string;
+  phone: string;
+  email: string;
+
   cuisine: string[];
-  priceRange: "$" | "$$" | " $$$";
+  priceRange: "$" | "$$" | "$$$";
+
   profileImage?: string;
+
   address: string;
+  city: string;
+  state: string;
+  zipCode: string;
   location: string;
+
+  openingHours: {
+    open: string;
+    close: string;
+  };
+
   image: string;
-  reviewCount:number;
-  rating:number;
+
+  reviewCount: number;
+  rating: number;
+
   chef: string;
+
   availableSlots: string[];
   tags: string[];
+
   featured: boolean;
   exclusive: boolean;
-  owner:mongoose.Types.ObjectId;
+
+  owner: mongoose.Types.ObjectId;
+
   totalSeats: number;
+
   status: "pending" | "approved" | "rejected";
+
   createdAt: Date;
   updatedAt: Date;
 }
@@ -46,6 +68,17 @@ const restaurantSchema = new Schema<IRestaurant>(
       trim: true,
     },
 
+    phone: {
+  type: String,
+  required: true,
+},
+
+email: {
+  type: String,
+  required: true,
+  trim: true,
+},
+
     cuisine: [
       {
         type: String,
@@ -69,10 +102,39 @@ const restaurantSchema = new Schema<IRestaurant>(
       required: true,
     },
 
-    location: {
-      type: String,
-      required: true,
-    },
+city: {
+  type: String,
+  required: true,
+  trim: true,
+},
+
+state: {
+  type: String,
+  required: true,
+  trim: true,
+},
+
+zipCode: {
+  type: String,
+  required: true,
+  trim: true,
+},
+
+location: {
+  type: String,
+  required: true,
+},
+
+openingHours: {
+  open: {
+    type: String,
+    required: true,
+  },
+  close: {
+    type: String,
+    required: true,
+  },
+},
 
     image: {
       type: String,

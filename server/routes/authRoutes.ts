@@ -4,10 +4,10 @@ import { protect } from "../middlewares/auth.js";
 
 
 
-const authRouter=Router();
+const AuthRouter=Router();
 
-authRouter.post("/register",registerUser);
-authRouter.post("/login",loginUser);
-authRouter.get("/me", protect, getMe);
+AuthRouter.post("/register",registerUser);
+AuthRouter.post("/login",loginUser);
+AuthRouter.get("/me", protect, getMe);
 
-export default authRouter;
+export default AuthRouter;
